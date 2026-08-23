@@ -1,7 +1,11 @@
+import { useState } from 'react';
 import { TarjetaTramite } from './components/TarjetaTramite';
-import { Droplets, Trash2, Lightbulb, Building2, ShieldCheck } from 'lucide-react';
+import { ConsultasPage } from './pages/ConsultasPage';
+import { Droplets, Trash2, Lightbulb, Building2, Home, FileSearch } from 'lucide-react';
 
 export function App() {
+  const [activeTab, setActiveTab] = useState<'inicio' | 'consultas'>('consultas');
+
   return (
     <div className="app-page">
       {/* Bar Institucional Superior */}
@@ -25,58 +29,76 @@ export function App() {
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '0.85rem', background: 'rgba(255, 255, 255, 0.15)', padding: '0.35rem 0.85rem', borderRadius: '9999px', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
-              <ShieldCheck size={16} /> Canal Oficial Verificado
-            </span>
-          </div>
+          {/* Navegación entre Servicios e PQRS */}
+          <nav className="nav-tabs">
+            <button
+              className={`nav-tab ${activeTab === 'consultas' ? 'active' : ''}`}
+              onClick={() => setActiveTab('consultas')}
+            >
+              <FileSearch size={18} />
+              Consultar PQRS
+            </button>
+            <button
+              className={`nav-tab ${activeTab === 'inicio' ? 'active' : ''}`}
+              onClick={() => setActiveTab('inicio')}
+            >
+              <Home size={18} />
+              Trámites Principales
+            </button>
+          </nav>
         </div>
       </header>
 
-      {/* Contenido Principal */}
+      {/* Contenido Principal según la pestaña activa */}
       <main className="main-content">
-        {/* Encabezado "Respuestas" requerido por el usuario */}
-        <section className="seccion-respuestas-header">
-          <div>
-            <h2 className="titulo-respuestas">Respuestas</h2>
-            <p className="subtitulo-respuestas">
-              Seleccione la categoría correspondiente para consultar información o registrar su reporte ciudadano.
-            </p>
-          </div>
-          <span className="badge-institucional">
-            3 Servicios Disponibles
-          </span>
-        </section>
+        {activeTab === 'inicio' ? (
+          <>
+            {/* Encabezado "Respuestas" */}
+            <section className="seccion-respuestas-header">
+              <div>
+                <h2 className="titulo-respuestas">Respuestas</h2>
+                <p className="subtitulo-respuestas">
+                  Seleccione la categoría correspondiente para consultar información o registrar su reporte ciudadano.
+                </p>
+              </div>
+              <span className="badge-institucional">
+                3 Servicios Disponibles
+              </span>
+            </section>
 
-        {/* Grid de 3 Tarjetas en Columnas */}
-        <section className="tarjetas-grid">
-          {/* Tarjeta 1: Agua y Alcantarillado */}
-          <TarjetaTramite
-            titulo="Agua y Alcantarillado"
-            descripcion="Reportes y solicitudes de atención para fugas de agua potable, cortes programados o imprevistos de servicio y mantenimiento a la red de alcantarillado."
-            categoria="Servicios Básicos"
-            icono={<Droplets size={24} />}
-            tags={['Fugas', 'Cortes de servicio', 'Alcantarillado']}
-          />
+            {/* Grid de 3 Tarjetas en Columnas */}
+            <section className="tarjetas-grid">
+              {/* Tarjeta 1: Agua y Alcantarillado */}
+              <TarjetaTramite
+                titulo="Agua y Alcantarillado"
+                descripcion="Reportes y solicitudes de atención para fugas de agua potable, cortes programados o imprevistos de servicio y mantenimiento a la red de alcantarillado."
+                categoria="Servicios Básicos"
+                icono={<Droplets size={24} />}
+                tags={['Fugas', 'Cortes de servicio', 'Alcantarillado']}
+              />
 
-          {/* Tarjeta 2: Recolección de Basura */}
-          <TarjetaTramite
-            titulo="Recolección de Basura"
-            descripcion="Información sobre rutas y horarios de recolección de residuos, reporte de acumulación de deshechos en vía pública y atención en puntos críticos."
-            categoria="Aseo Urbano"
-            icono={<Trash2 size={24} />}
-            tags={['Horarios', 'Acumulación', 'Puntos críticos']}
-          />
+              {/* Tarjeta 2: Recolección de Basura */}
+              <TarjetaTramite
+                titulo="Recolección de Basura"
+                descripcion="Información sobre rutas y horarios de recolección de residuos, reporte de acumulación de deshechos en vía pública y atención en puntos críticos."
+                categoria="Aseo Urbano"
+                icono={<Trash2 size={24} />}
+                tags={['Horarios', 'Acumulación', 'Puntos críticos']}
+              />
 
-          {/* Tarjeta 3: Alumbrado Público */}
-          <TarjetaTramite
-            titulo="Alumbrado Público"
-            descripcion="Atención oportuna para el reporte de lámparas y luminarias apagadas, postes caídos o dañados, y fallas en el circuito eléctrico de calles y parques."
-            categoria="Infraestructura"
-            icono={<Lightbulb size={24} />}
-            tags={['Lámparas apagadas', 'Postes caídos', 'Circuitos con falla']}
-          />
-        </section>
+              {/* Tarjeta 3: Alumbrado Público */}
+              <TarjetaTramite
+                titulo="Alumbrado Público"
+                descripcion="Atención oportuna para el reporte de lámparas y luminarias apagadas, postes caídos o dañados, y fallas en el circuito eléctrico de calles y parques."
+                categoria="Infraestructura"
+                icono={<Lightbulb size={24} />}
+                tags={['Lámparas apagadas', 'Postes caídos', 'Circuitos con falla']}
+              />
+            </section>
+          </>
+        ) : (
+          <ConsultasPage />
+        )}
       </main>
 
       {/* Pie de Página Institucional */}
