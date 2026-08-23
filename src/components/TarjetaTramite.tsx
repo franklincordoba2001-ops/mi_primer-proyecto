@@ -1,14 +1,14 @@
-import React from 'react';
+import type { ReactNode, FC } from 'react';
 
 export interface TarjetaTramiteProps {
   titulo: string;
   descripcion: string;
   categoria: string;
-  icono?: React.ReactNode;
+  icono?: ReactNode;
   tags?: string[];
 }
 
-export const TarjetaTramite: React.FC<TarjetaTramiteProps> = ({
+export const TarjetaTramite: FC<TarjetaTramiteProps> = ({
   titulo,
   descripcion,
   categoria,
