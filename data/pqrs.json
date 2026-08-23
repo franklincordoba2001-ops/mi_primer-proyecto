@@ -1,0 +1,102 @@
+[
+  {
+    "id": "RAD-2026-001",
+    "solicitante": "Carlos Eduardo Mendoza",
+    "categoria": "Agua y Alcantarillado",
+    "descripcion": "Fuga de agua potable en tubería principal frente al predio Calle 45 # 12-34 Barrio El Prado.",
+    "estado": "Resuelto",
+    "fechaRadicacion": "2026-08-10",
+    "plazoLegal": "15 días hábiles",
+    "respuestaOficial": "Cuadrilla técnica reparó la fuga de la válvula principal y normalizó la presión el 12 de agosto de 2026."
+  },
+  {
+    "id": "RAD-2026-002",
+    "solicitante": "María Fernanda Gómez",
+    "categoria": "Recolección de Basura",
+    "descripcion": "Acumulación de residuos sólidos en esquina del parque central debido a omisión en la ruta del martes.",
+    "estado": "Resuelto",
+    "fechaRadicacion": "2026-08-12",
+    "plazoLegal": "10 días hábiles",
+    "respuestaOficial": "Se despachó camión compactador de refuerzo recolectando 1.5 toneladas de deshechos."
+  },
+  {
+    "id": "RAD-2026-003",
+    "solicitante": "Jorge Luis Espitia",
+    "categoria": "Alumbrado Público",
+    "descripcion": "Tres luminarias LED apagadas en la Carrera 15 entre Calles 8 y 10, generando zona oscura.",
+    "estado": "En trámite",
+    "fechaRadicacion": "2026-08-18",
+    "plazoLegal": "15 días hábiles",
+    "respuestaOficial": "Solicitud programada para cambio de fotoceldas y bombillos LED en la jornada nocturna del 25 de agosto."
+  },
+  {
+    "id": "RAD-2026-004",
+    "solicitante": "Ana Lucía Restrepo",
+    "categoria": "Agua y Alcantarillado",
+    "descripcion": "Obstrucción en red de alcantarillado con rebosamiento de aguas servidas en la Manzana D Casa 8.",
+    "estado": "En trámite",
+    "fechaRadicacion": "2026-08-20",
+    "plazoLegal": "5 días hábiles (Prioridad Sanitaria)",
+    "respuestaOficial": "Equipo de carro succión-vactor asignado para desobstrucción del colector matriz."
+  },
+  {
+    "id": "RAD-2026-005",
+    "solicitante": "Roberto Antonio Silva",
+    "categoria": "Recolección de Basura",
+    "descripcion": "Punto crítico de arrojo clandestino de escombros y restos de poda en el sector La Selva.",
+    "estado": "Resuelto",
+    "fechaRadicacion": "2026-08-05",
+    "plazoLegal": "10 días hábiles",
+    "respuestaOficial": "Jornada de limpieza especial finalizada con instalación de letrero de sanción ambiental."
+  },
+  {
+    "id": "RAD-2026-006",
+    "solicitante": "Patricia Elena Morales",
+    "categoria": "Alumbrado Público",
+    "descripcion": "Poste de concreto inclinado en ángulo de peligro tras impacto de vehículo en Av. Panamericana.",
+    "estado": "En trámite",
+    "fechaRadicacion": "2026-08-22",
+    "plazoLegal": "48 horas (Emergencia)",
+    "respuestaOficial": "Zona acordonada por Movilidad y Gestión del Riesgo. Izado de nuevo poste en ejecución."
+  },
+  {
+    "id": "RAD-2026-007",
+    "solicitante": "Gonzalo Ramírez Ruiz",
+    "categoria": "Agua y Alcantarillado",
+    "descripcion": "Baja presión constante de agua en el sector alto del Barrio San José durante las horas pico.",
+    "estado": "Resuelto",
+    "fechaRadicacion": "2026-08-01",
+    "plazoLegal": "15 días hábiles",
+    "respuestaOficial": "Se recalibraron los reguladores de presión de la estación de bombeo #3."
+  },
+  {
+    "id": "RAD-2026-008",
+    "solicitante": "Diana Marcela Torres",
+    "categoria": "Recolección de Basura",
+    "descripcion": "Solicitud de instalación de contenedores sellados para separación en la fuente en la plaza de mercado.",
+    "estado": "En trámite",
+    "fechaRadicacion": "2026-08-15",
+    "plazoLegal": "20 días hábiles",
+    "respuestaOficial": "En estudio de viabilidad por la Secretaría de Infraestructura y Empresa de Aseo."
+  },
+  {
+    "id": "RAD-2026-009",
+    "solicitante": "Héctor Fabio Valencia",
+    "categoria": "Alumbrado Público",
+    "descripcion": "Luminaria intermitente que enciende y apaga continuamente frente a la Escuela Bolivariana.",
+    "estado": "Resuelto",
+    "fechaRadicacion": "2026-08-08",
+    "plazoLegal": "15 días hábiles",
+    "respuestaOficial": "Sustitución del balasto y arrancador defectuoso realizada el 10 de agosto."
+  },
+  {
+    "id": "RAD-2026-010",
+    "solicitante": "Sandra Milena Castro",
+    "categoria": "Agua y Alcantarillado",
+    "descripcion": "Tapa de alcantarilla fracturada sobre la ciclorruta del Conector Norte.",
+    "estado": "En trámite",
+    "fechaRadicacion": "2026-08-21",
+    "plazoLegal": "5 días hábiles",
+    "respuestaOficial": "Se colocó señalización preventiva temporal. Reposición con tapa en polímero de alta resistencia programada."
+  }
+]
