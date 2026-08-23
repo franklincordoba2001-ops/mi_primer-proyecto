@@ -1,10 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TarjetaTramite } from './components/TarjetaTramite';
 import { ConsultasPage } from './pages/ConsultasPage';
+import { DetalleConsultaPage } from './pages/DetalleConsultaPage';
 import { Droplets, Trash2, Lightbulb, Building2, Home, FileSearch } from 'lucide-react';
 
 export function App() {
-  const [activeTab, setActiveTab] = useState<'inicio' | 'consultas'>('consultas');
+  const [activeTab, setActiveTab] = useState<'inicio' | 'consultas' | 'detalle'>('consultas');
+  const [selectedRadicadoId, setSelectedRadicadoId] = useState<string>('RAD-2026-001');
+
+  // Soporte para URLs directas como /consultas/1 o /consultas/RAD-2026-001
+  useEffect(() => {
+    const path = window.location.pathname;
+    if (path.startsWith('/consultas/')) {
+      const idFromUrl = path.replace('/consultas/', '').trim();
+      if (idFromUrl) {
+        setSelectedRadicadoId(idFromUrl);
+        setActiveTab('detalle');
+      }
+    }
+  }, []);
+
+  const handleSelectRadicado = (id: string) => {
+    setSelectedRadicadoId(id);
+    setActiveTab('detalle');
+    window.history.pushState({}, '', `/consultas/${id}`);
+  };
+
+  const handleBackToConsultas = () => {
+    setActiveTab('consultas');
+    window.history.pushState({}, '', '/');
+  };
 
   return (
     <div className="app-page">
@@ -29,18 +54,21 @@ export function App() {
             </div>
           </div>
 
-          {/* Navegación entre Servicios e PQRS */}
+          {/* Navegación entre Servicios, PQRS y Ficha */}
           <nav className="nav-tabs">
             <button
-              className={`nav-tab ${activeTab === 'consultas' ? 'active' : ''}`}
-              onClick={() => setActiveTab('consultas')}
+              className={`nav-tab ${activeTab === 'consultas' || activeTab === 'detalle' ? 'active' : ''}`}
+              onClick={handleBackToConsultas}
             >
               <FileSearch size={18} />
               Consultar PQRS
             </button>
             <button
               className={`nav-tab ${activeTab === 'inicio' ? 'active' : ''}`}
-              onClick={() => setActiveTab('inicio')}
+              onClick={() => {
+                setActiveTab('inicio');
+                window.history.pushState({}, '', '/');
+              }}
             >
               <Home size={18} />
               Trámites Principales
@@ -49,9 +77,9 @@ export function App() {
         </div>
       </header>
 
-      {/* Contenido Principal según la pestaña activa */}
+      {/* Contenido Principal según la vista activa */}
       <main className="main-content">
-        {activeTab === 'inicio' ? (
+        {activeTab === 'inicio' && (
           <>
             {/* Encabezado "Respuestas" */}
             <section className="seccion-respuestas-header">
@@ -96,8 +124,17 @@ export function App() {
               />
             </section>
           </>
-        ) : (
-          <ConsultasPage />
+        )}
+
+        {activeTab === 'consultas' && (
+          <ConsultasPage onSelectRadicado={handleSelectRadicado} />
+        )}
+
+        {activeTab === 'detalle' && (
+          <DetalleConsultaPage
+            radicadoId={selectedRadicadoId}
+            onBack={handleBackToConsultas}
+          />
         )}
       </main>
 

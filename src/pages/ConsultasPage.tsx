@@ -9,7 +9,8 @@ import {
   Calendar,
   Filter,
   User,
-  Info
+  Info,
+  ChevronRight
 } from 'lucide-react';
 
 export interface PqrsItem {
@@ -23,7 +24,11 @@ export interface PqrsItem {
   respuestaOficial: string;
 }
 
-export function ConsultasPage() {
+interface ConsultasPageProps {
+  onSelectRadicado?: (id: string) => void;
+}
+
+export function ConsultasPage({ onSelectRadicado }: ConsultasPageProps) {
   const [items, setItems] = useState<PqrsItem[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -187,14 +192,19 @@ export function ConsultasPage() {
       {!loading && !error && filteredItems.length > 0 && (
         <div className="pqrs-results-section">
           <div className="results-count">
-            Mostrando <strong>{filteredItems.length}</strong> de {items.length} radicados encontrados
+            Mostrando <strong>{filteredItems.length}</strong> de {items.length} radicados encontrados &bull; Haz clic en una tarjeta para ver la Ficha Técnica completa
           </div>
 
           <div className="pqrs-cards-grid">
             {filteredItems.map(item => {
               const isResuelto = item.estado === 'Resuelto';
               return (
-                <article key={item.id} className="pqrs-card">
+                <article
+                  key={item.id}
+                  className="pqrs-card"
+                  onClick={() => onSelectRadicado?.(item.id)}
+                  title="Haz clic para ver la ficha técnica"
+                >
                   {/* Tarjeta Top / Header */}
                   <div className="pqrs-card-header">
                     <div className="radicado-badge">
@@ -235,6 +245,11 @@ export function ConsultasPage() {
                         <span>Respuesta Oficial Institucional</span>
                       </div>
                       <p className="respuesta-texto">{item.respuestaOficial}</p>
+                    </div>
+
+                    <div style={{ marginTop: '0.5rem', display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0.2rem', color: 'var(--azul-institucional)', fontSize: '0.85rem', fontWeight: 700 }}>
+                      <span>Ver Ficha Técnica Completa</span>
+                      <ChevronRight size={16} />
                     </div>
                   </div>
                 </article>

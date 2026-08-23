@@ -312,10 +312,7 @@ body {
   background-color: var(--azul-institucional-hover);
 }
 
-/* ==========================================================================
-   ESTILOS PARA ConsultasPage (4 ESTADOS VISUALES)
-   ========================================================================== */
-
+/* ConsultasPage & Search styles */
 .consultas-container {
   display: flex;
   flex-direction: column;
@@ -364,11 +361,6 @@ body {
   border-color: var(--azul-institucional);
 }
 
-.btn-refresh:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
-
 .spin-icon {
   animation: spin 1s linear infinite;
 }
@@ -377,7 +369,6 @@ body {
   100% { transform: rotate(360deg); }
 }
 
-/* Buscador y Filtros */
 .search-filter-bar {
   display: flex;
   flex-direction: column;
@@ -428,12 +419,6 @@ body {
   font-size: 1.5rem;
   color: var(--text-muted);
   cursor: pointer;
-  padding: 0.2rem;
-  line-height: 1;
-}
-
-.clear-search-btn:hover {
-  color: var(--text-main);
 }
 
 .category-pills {
@@ -474,10 +459,9 @@ body {
   background-color: var(--azul-institucional);
   color: #ffffff;
   border-color: var(--azul-institucional);
-  box-shadow: 0 2px 6px rgba(0, 51, 153, 0.2);
 }
 
-/* Cajas de Estado Visuales */
+/* State Boxes */
 .state-box {
   background-color: var(--bg-card);
   border: 1px solid var(--border-color);
@@ -489,13 +473,9 @@ body {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  box-shadow: var(--shadow-sm);
 }
 
-/* Estado 1: Cargando */
-.loading-box {
-  background-color: #ffffff;
-}
+.loading-box { background-color: #ffffff; }
 
 .spinner {
   width: 48px;
@@ -506,7 +486,6 @@ body {
   animation: spin 0.8s linear infinite;
 }
 
-/* Estado 2: Error */
 .error-box {
   border-color: rgba(239, 68, 68, 0.3);
   background-color: var(--rojo-bg);
@@ -534,16 +513,9 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 0.5rem;
   box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
-  transition: background-color 0.2s;
 }
 
-.btn-retry:hover {
-  background-color: #dc2626;
-}
-
-/* Estado 3: Vacío */
 .empty-box {
   background-color: #ffffff;
   border-style: dashed;
@@ -568,8 +540,9 @@ body {
   border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
-  margin-top: 0.5rem;
-  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .btn-secondary-action:hover {
@@ -589,7 +562,6 @@ body {
   max-width: 500px;
 }
 
-/* Estado 4: Lista de PQRS */
 .pqrs-results-section {
   display: flex;
   flex-direction: column;
@@ -616,6 +588,7 @@ body {
   transition: all 0.25s ease;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .pqrs-card:hover {
@@ -643,7 +616,6 @@ body {
   color: var(--azul-institucional);
 }
 
-/* Badges de Estado */
 .estado-badge {
   display: inline-flex;
   align-items: center;
@@ -666,7 +638,6 @@ body {
   border: 1px solid rgba(245, 158, 11, 0.3);
 }
 
-/* Cuerpo de la Tarjeta */
 .pqrs-card-body {
   padding: 1.5rem;
   display: flex;
@@ -718,7 +689,6 @@ body {
   gap: 0.35rem;
 }
 
-/* Respuesta Oficial Box */
 .respuesta-oficial-box {
   margin-top: 0.5rem;
   padding: 1rem;
@@ -752,6 +722,323 @@ body {
   font-size: 0.875rem;
   color: var(--text-secondary);
   line-height: 1.45;
+}
+
+/* ==========================================================================
+   ESTILOS DE LA FICHA TÉCNICA (DetalleConsultaPage)
+   ========================================================================== */
+
+.detalle-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.detalle-actions-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.btn-back {
+  background-color: #ffffff;
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  background-color: var(--azul-subtle);
+  color: var(--azul-institucional);
+  border-color: var(--azul-institucional);
+}
+
+.btn-copy-link {
+  background-color: var(--azul-institucional);
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-md);
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 51, 153, 0.25);
+  transition: all 0.2s;
+}
+
+.btn-copy-link:hover {
+  background-color: var(--azul-institucional-hover);
+  transform: translateY(-1px);
+}
+
+.btn-copy-link.btn-copied {
+  background-color: #10b981;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.ficha-tecnica-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-top: 6px solid var(--azul-institucional);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.ficha-header {
+  background: linear-gradient(135deg, var(--azul-subtle) 0%, #ffffff 100%);
+  padding: 2rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.ficha-header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ficha-brand-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--azul-institucional);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+}
+
+.ficha-title-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ficha-radicado-id {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--azul-institucional);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.categoria-tag-large {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--azul-institucional);
+  background-color: var(--azul-claro);
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(0, 51, 153, 0.2);
+}
+
+.ficha-body {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+.ficha-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+.info-card-item {
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.info-value {
+  font-size: 1.05rem;
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.ficha-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.ficha-section-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.ficha-text-box {
+  background-color: #f8fafc;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--azul-institucional);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  font-size: 0.975rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.respuesta-oficial-card {
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.respuesta-oficial-card.resuelto {
+  background-color: #f0fdf4;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-left: 5px solid #10b981;
+}
+
+.respuesta-oficial-card.tramite {
+  background-color: #fffbe6;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-left: 5px solid #f59e0b;
+}
+
+.respuesta-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.825rem;
+  font-weight: 700;
+  color: var(--text-main);
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.respuesta-contenido {
+  font-size: 1rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Timeline */
+.timeline-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  position: relative;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background-color: var(--border-color);
+}
+
+.timeline-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+}
+
+.step-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid var(--border-color);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+}
+
+.timeline-step.completed .step-icon {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+.timeline-step.active .step-icon {
+  background-color: #f59e0b;
+  border-color: #f59e0b;
+  color: #ffffff;
+}
+
+.step-content strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text-main);
+}
+
+.step-content p {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+/* Footer stamp */
+.ficha-footer {
+  background-color: #f8fafc;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.verificacion-stamp {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #047857;
 }
 
 /* Footer Institucional */
@@ -799,11 +1086,15 @@ body {
     gap: 0.75rem;
   }
 
-  .titulo-respuestas, .consultas-title {
-    font-size: 1.75rem;
+  .titulo-respuestas, .consultas-title, .ficha-radicado-id {
+    font-size: 1.5rem;
   }
   
   .main-content {
     padding: 1.5rem 1rem 3rem;
+  }
+
+  .ficha-body, .ficha-header {
+    padding: 1.25rem;
   }
 }
